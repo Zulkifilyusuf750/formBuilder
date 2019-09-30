@@ -1,5 +1,6 @@
 # onAddField
 
+### Parameters/Arguments ``onAddField(fieldId, field)``
 Callback for when fields are added to the stage. Good as a catch-all action for anything that needs to happen before a field is added to the stage. Possible to modify the field's configuration before it's appended by returning a fieldData object eg:
 
 ```javascript
@@ -20,4 +21,12 @@ const options = {
   },
 }
 $(container).formBuilder(options)
+```
+### Or change subtype field name (or other properties)
+```
+function onAddField(_, field) {
+    if(field.subtype == 'range') {
+      field.name = 'range-' + field.name.split('-')[1];
+    }
+  }
 ```
